@@ -6,7 +6,7 @@ var two = new Two({
         autostart: true
 }).appendTo(document.body);
 
-
+var debug=true;
 var pagewidth=$(document).width();
 var pageheight=$(document).height();
 
@@ -17,15 +17,35 @@ var height= pageheight/4;
 let pictures = [];
 let textures = [];
 
-for(var i= 1; i<=20; i++){
-        pictures[i]= two.makeRectangle(i%5*width,(i/height|0)*height,width,height);
-        textures[i]= two.makeTexture("image"+i+".png");
+for(var i= 0; i<20; i++){
+        pictures[i]= two.makeRectangle((i)%5*width+width/2,Math.floor((i)/5)*height+height/2,width*0.9,height*0.9);
+        textures[i]= two.makeTexture("https://annerion.github.io/Dad/images/image"+(i+1)+".png");
         pictures[i].fill=textures[i];
+        pictures[i].opacity=0.5;
 }
-
-
-
 
 two.update();
 
+var selectionMade=false;
+var selection;
+pictures.forEach(function(elem) {
+        elem._renderer.elem.addEventListener('mouseover', function(e) {
+                elem.opacity=1;
+        }, false);
+        elem._renderer.elem.addEventListener('mouseout', function(e) {
+                elem.opacity=0.5;
+        }, false);
+        elem._renderer.elem.addEventListener('click', function(e) {
+                if(selectionMade){
+                        selection.noStroke();
+                        selectionMade=false;
+                        selection=null;
+                }
+                selectionMade=true;
+                selection=elem;
+                selection.stroke='green';
+                selection.linewidth=width/20;
+        }, false);
+});
 
+two.play();
