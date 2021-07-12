@@ -20,6 +20,7 @@ let textures = [];
 for(var i= 0; i<20; i++){
         pictures[i]= two.makeRectangle((i)%5*width+width/2,Math.floor((i)/5)*height+height/2,width*0.9,height*0.9);
         textures[i]= two.makeTexture("https://annerion.github.io/Dad/images/image"+(i+1)+".png");
+        textures[i].scale= 0.65;
         pictures[i].fill=textures[i];
         pictures[i].opacity=0.5;
 }
