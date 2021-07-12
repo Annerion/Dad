@@ -6,17 +6,24 @@ var two = new Two({
         autostart: true
 }).appendTo(document.body);
 
-var rectangle = two.makeRectangle(72, 100, 50, 50);
 
-//circle.fill = '#FF8000';
-//circle.stroke = 'orangered'; // Accepts all valid css color
-//circle.linewidth = 5;
+var pagewidth=$(document).width();
+var pageheight=$(document).height();
 
-two.update();
-var texture = two.makeTexture('https://i.imgur.com/DRmh6S9.jpg');
+var width= pagewidth/5;
+var height= pageheight/4;
 
-rectangle.fill = texture;
-texture.scale = 0.125;
+
+let pictures = [];
+let textures = [];
+
+for(var i= 1; i<=20; i++){
+        pictures[i]= two.makeRectangle(i%5*width,(i/height|0)*height,width,height);
+        textures[i]= two.makeTexture("./image"+i+".png");
+        pictures[i].fill=textures[i];
+}
+
+
 
 
 two.update();
