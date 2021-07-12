@@ -19,7 +19,7 @@ let textures = [];
 
 for(var i= 1; i<=20; i++){
         pictures[i]= two.makeRectangle(i%5*width,(i/height|0)*height,width,height);
-        textures[i]= two.makeTexture("./image"+i+".png");
+        textures[i]= two.makeTexture("image"+i+".png");
         pictures[i].fill=textures[i];
 }
 
