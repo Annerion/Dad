@@ -39,12 +39,16 @@ pictures.forEach(function(elem) {
                 if(selectionMade){
                         selection.noStroke();
                         selectionMade=false;
+                }
+                if(selection!=elem){
+                        selectionMade=true;
+                        selection=elem;
+                        selection.stroke='green';
+                        selection.linewidth=width/20;
+                }
+                else{
                         selection=null;
                 }
-                selectionMade=true;
-                selection=elem;
-                selection.stroke='green';
-                selection.linewidth=width/20;
         }, false);
 });
 
