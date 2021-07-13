@@ -15,13 +15,18 @@ var height= pageheight/4;
 
 
 let pictures = [];
-let textures = [];
 
+var margin=0.94;
+
+  
+const iwidth=496;
+const iheight=351;
+var xt=width*margin/iwidth;
+var yt=height*margin/iheight;
 for(var i= 0; i<20; i++){
-        pictures[i]= two.makeRectangle((i)%5*width+width/2,Math.floor((i)/5)*height+height/2,width*0.9,height*0.9);
-        textures[i]= two.makeTexture("https://annerion.github.io/Dad/images/image"+(i+1)+".png");
-        textures[i].scale= 1;
-        pictures[i].fill=textures[i];
+
+        pictures[i]= two.makeSprite("https://annerion.github.io/Dad/images/image"+(i+1)+".png",(i)%5*width+width/2,Math.floor((i)/5)*height+height/2);
+        pictures[i].scale= new Two.Vector(xt,yt);
         pictures[i].opacity=0.5;
 }
 
@@ -50,8 +55,10 @@ pictures.forEach(function(elem) {
                 else{
                         selection=null;
                 }
-                myObject = JSON.stringify(selection);
-//                jQuery.post("https://annerion.github.io/Dad/images/image"+(i+1)+".png")
+                var data= pictures.indexOf(selection);
+                //$.post("https://annerion.github.io/instructor.html", data);
+                $.post("instructor.html",data);
+                if(debug){console.log(data)};
         }, false);
 });
 
