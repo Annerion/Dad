@@ -51,6 +51,7 @@ pictures.forEach(function(elem) {
                         selection=null;
                 }
                 myObject = JSON.stringify(selection);
+//                jQuery.post("https://annerion.github.io/Dad/images/image"+(i+1)+".png")
         }, false);
 });
 
