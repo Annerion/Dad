@@ -57,7 +57,7 @@ pictures.forEach(function(elem) {
                 }
                 var data= pictures.indexOf(selection);
                 //$.post("https://annerion.github.io/instructor.html", data);
-                $.post("instructor.html",data);
+                $.post("post.php",{image: data});
                 if(debug){console.log(data)};
         }, false);
 });
